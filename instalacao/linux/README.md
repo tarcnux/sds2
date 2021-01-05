@@ -113,11 +113,32 @@ snap install postman
 https://www.postgresql.org/download/linux/ubuntu/
 ```
 
+Devido ao erro [Skipping acquire of configured file 'main/binary-i386/Packages'](https://stackoverflow.com/questions/61523447/skipping-acquire-of-configured-file-main-binary-i386-packages) deve-se alterar a primeira linha da documentação oficial do Postgres e acrescentar **[arch=amd64]**
+```
+sudo sh -c 'echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get -y install postgresql
+```
+
+[Para alterar a senha do Postgres usando a linha de comando](https://www.liquidweb.com/kb/change-a-password-for-postgresql-on-linux-via-command-line/)
+
+```
+sudo su
+su - postgres
+psql
+\password
+postgres
+\q
+exit
+```
+
 ## pgAdmin
 
 ```
 https://www.pgadmin.org/download/pgadmin-4-apt/
 ```
+
 
 ## Heroku CLI
 
